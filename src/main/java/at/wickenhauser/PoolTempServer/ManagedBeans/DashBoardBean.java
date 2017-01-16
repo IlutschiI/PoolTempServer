@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package at.wickenhauser.PoolTempServer.ManagedBeans;
 
 import at.wickenhauser.PoolTempServer.entity.Temperature;
@@ -11,10 +6,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.model.chart.AxisType;
@@ -58,8 +50,6 @@ public class DashBoardBean implements Serializable{
     public void setChartModel(LineChartModel chartModel) {
         this.chartModel = chartModel;
     }
-
-    
     
     public double getAccTemp() {
         return accTemp;
@@ -128,7 +118,5 @@ public class DashBoardBean implements Serializable{
          
         return model;
     }
-    
-    
-    
+  
 }
