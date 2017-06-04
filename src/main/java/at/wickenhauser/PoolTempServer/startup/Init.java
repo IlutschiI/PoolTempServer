@@ -45,6 +45,7 @@ public class Init {
             public void run() {
                 double temp;
                 int i=0;
+                TemperatureController.readTempEndless();
                 while(true){
                     try {
                         temp=TemperatureController.readTemperature();

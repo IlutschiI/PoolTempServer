@@ -51,6 +51,7 @@ public class TemperatureFacadeREST extends AbstractFacade<Temperature> {
     @Override
     @Produces({MediaType.APPLICATION_JSON})
     public List<Temperature> findAll() {
+        Logger.getGlobal().log(Level.INFO,"finding all "+ new Date().toString());
         List<Temperature> templist = super.findAll();
         templist.sort(new Comparator<Temperature>() {
             @Override
@@ -64,6 +65,8 @@ public class TemperatureFacadeREST extends AbstractFacade<Temperature> {
                 }
             }
         });
+        
+        Logger.getGlobal().log(Level.INFO,"found all "+ new Date().toString());
         return templist;
     }
 
@@ -72,7 +75,7 @@ public class TemperatureFacadeREST extends AbstractFacade<Temperature> {
     @Produces({MediaType.APPLICATION_JSON})
     public List<Temperature> findRange(@PathParam("from") Long from) {
         List<Temperature> result;
-        System.out.println("" + new Date(from));
+        System.out.println("find range " + new Date().toString());
         Date s = new Date(from);
         result = getEntityManager().createNamedQuery("getAllTempsSince").setParameter("time", new Date(from)).getResultList();
         result.sort(new Comparator<Temperature>() {
@@ -87,6 +90,8 @@ public class TemperatureFacadeREST extends AbstractFacade<Temperature> {
                 }
             }
         });
+        
+        System.out.println("found range " + new Date().toString());
         return result;
         //q.setMaxResults(range[1] - range[0] + 1);
         //q.setFirstResult(range[0]);
